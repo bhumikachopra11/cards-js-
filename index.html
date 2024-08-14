@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid with Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: beige;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            margin: 10px 0 5px 0;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Card Grid</h1>
+        <div class="card-grid" id="card-grid">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cardData = [
+                { title: "Squirrel", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3HTgKkm-tBcNbiLG5eCL12nOngY_fEta2BA&s", description: "This is a Squirrel." },
+                { title: "Tiger", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8q8tDRNSGOaBOUTKecyfAAGzv-HR-Nv8Pag&s", description: "This is a Tiger." },
+                { title: "Polar Bear", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK0Au6KMF9u-vu2fnUAZZCNLYxOXpfP9SRBQ&s", description: "This is a Polar Bear." },
+                { title: "Zebra", imgSrc: "https://t4.ftcdn.net/jpg/05/51/73/07/360_F_551730796_1hsv3NPmpSlhmyWXHtthxK7TfDEka6cQ.jpg", description: "This is a Zebra." },
+                { title: "Meerkats", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-LwDOHycQv0Wqm_x4X1gwcYWf0tqQ2N0hgA&s", description: "These are Meerkats." },
+                { title: "Lion", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbx8uWU9b_3q9-s_VWri2C0xjH7Vwkd4GXnA&s", description: "This is a Lion." },
+                { title: "Elephant", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZrhtASMHPI0gS-S7V3xwOQj-BS7dHBvhe1g&s", description: "This is an Elephant." },
+                { title: "Dog", imgSrc: "https://storage.googleapis.com/pcc-wagtail-media/images/IMG_9426.2e16d0ba.fill-768x402.jpg", description: "This is a Dog." },
+                { title: "Porcupine", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyDO2aWO4sEmkN7BkwUxkbJQwhPvebWOYxDA&s", description: "This is a Porcupine." },
+                { title: "Hippopotamus", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftuQv2IbD09_Kw61g06gTj83q85UrZ0eqgA&s", description: "This is a Hippopotamus." },
+                { title: "Bear", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIOUQFpKK8gnEsj4URhLfcoemD8qMu6ZKyyQ&s", description: "This is a Bear." },
+                { title: "Panda", imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Giant_Panda_2004-03-2.jpg/1200px-Giant_Panda_2004-03-2.jpg", description: "This is a Panda." }
+            ];
+
+            const cardGrid = document.getElementById("card-grid");
+
+            cardData.forEach((card, index) => {
+                const cardElement = document.createElement("a");
+                cardElement.href = `description.html?title=${encodeURIComponent(card.title)}&imgSrc=${encodeURIComponent(card.imgSrc)}&description=${encodeURIComponent(card.description)}`;
+                cardElement.className = "card";
+                cardElement.innerHTML = `
+                    <img src="${card.imgSrc}" alt="${card.title} Image">
+                    <h2>${card.title}</h2>
+                    <p>Click to view details</p>
+                `;
+                cardGrid.appendChild(cardElement);
+            });
+        });
+    </script>
+</body>
+</html>
+

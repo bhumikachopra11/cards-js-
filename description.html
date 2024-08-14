@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: beige;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #007bff;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img id="card-image" src="" alt="">
+            <h1 id="card-title"></h1>
+            <p id="card-description"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get("title");
+            const imgSrc = urlParams.get("imgSrc");
+            const description = urlParams.get("description");
+
+            const descriptionText = {
+                "Squirrel": "Squirrels are small rodents found in various parts of the world. They are known for their bushy tails and agility. Squirrels are often seen collecting nuts and seeds. They play a crucial role in forest ecosystems by dispersing seeds.",
+                "Tiger": "Tigers are the largest wild cats and are native to Asia. They are known for their orange coat with black stripes. Tigers are solitary animals and are apex predators in their habitats. They are currently endangered due to habitat loss and poaching.",
+                "Polar Bear": "Polar bears are large bears native to the Arctic region. They have a thick layer of blubber and a dense coat of fur to keep them warm. Polar bears are excellent swimmers and primarily hunt seals. Climate change is a major threat to their habitat.",
+                "Zebra": "Zebras are African wild horses known for their distinctive black and white stripes. They are social animals that live in herds. Zebras graze on grasses and are preyed upon by lions and other large predators. Each zebra's stripe pattern is unique.",
+                "Meerkats": "Meerkats are small mongoose-like animals native to Southern Africa. They live in groups called mobs and have a complex social structure. Meerkats are known for their upright stance when they are on the lookout for predators. They feed on insects and small animals.",
+                "Lion": "Lions are large cats found in Africa and a small population in India. They are known for their majestic manes and are often referred to as the 'king of the jungle.' Lions live in prides and are social animals. Their numbers are declining due to habitat loss and human-wildlife conflict.",
+                "Elephant": "Elephants are the largest land animals and are native to Africa and Asia. They have large ears, long trunks, and tusks. Elephants are known for their intelligence and complex social structures. They play a vital role in their ecosystems by shaping their environment.",
+                "Dog": "Dogs are domesticated mammals and have been bred for various tasks and companionship. They come in various breeds, sizes, and temperaments. Dogs are known for their loyalty and are often referred to as 'man's best friend.' They are used in various roles including therapy and assistance.",
+                "Porcupine": "Porcupines are rodents known for their quills, which are sharp and can be used for defense. They are mostly nocturnal and are found in various parts of the world. Porcupines are herbivores and feed on leaves, fruits, and bark. Their quills are a unique adaptation for protection.",
+                "Hippopotamus": "Hippos are large, mostly herbivorous mammals native to Africa. They spend much of their time in water to keep cool. Hippos are known for their large mouths and tusks. They are territorial animals and can be very dangerous if threatened.",
+                "Bear": "Bears are large mammals found in various regions around the world. They have a diverse diet that includes plants, insects, and meat. Bears are generally solitary and have adapted to a range of habitats. Their behavior varies depending on the species and environment.",
+                "Panda": "Giant pandas are native to China and are known for their black and white fur. They primarily feed on bamboo, though they occasionally eat other plants or small animals. Pandas are a symbol of wildlife conservation efforts. Their population is slowly recovering due to conservation programs."
+            };
+
+            document.getElementById("card-title").innerText = title;
+            document.getElementById("card-image").src = imgSrc;
+            document.getElementById("card-description").innerText = descriptionText[title] || "No description available.";
+        });
+    </script>
+</body>
+</html>
